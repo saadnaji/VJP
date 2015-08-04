@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: VJP Plug-in
+Bundle-SymbolicName: com.javapathfinder.vjp;singleton:=true
+Bundle-Version: 1.0.15
+Bundle-Activator: com.javapathfinder.vjp.VJP
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.console,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core
+Eclipse-LazyStart: true
+Bundle-ClassPath: .,
+ lib/bcel.jar,
+ lib/env_jvm.jar,
+ lib/jpf.jar
