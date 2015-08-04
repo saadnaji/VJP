@@ -6,5 +6,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/env_jvm.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/env_jpf.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jpf.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jpf-classes.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

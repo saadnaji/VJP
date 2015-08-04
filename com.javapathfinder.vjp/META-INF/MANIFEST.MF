@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: VJP Plug-in
 Bundle-SymbolicName: com.javapathfinder.vjp;singleton:=true
-Bundle-Version: 1.0.18
+Bundle-Version: 2.0.18
 Bundle-Activator: com.javapathfinder.vjp.VJP
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
@@ -17,4 +17,6 @@ Eclipse-LazyStart: true
 Bundle-ClassPath: .,
  lib/env_jvm.jar,
  lib/env_jpf.jar,
- lib/jpf.jar
+ lib/jpf.jar,
+ lib/jpf-classes.jar
+ 
