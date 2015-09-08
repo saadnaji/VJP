@@ -36,6 +36,10 @@ public class DefaultProperties {
   
   private static final Path ENV_JPF_PATH = new Path("lib" + File.separatorChar 
                                                     + "env_jpf.jar");
+  private static final Path JPF_Classes_PATH = new Path("lib" + File.separatorChar 
+          + "jpf-classes.jar");
+
+  
 
   /**
    * Creates a HashMap containing the VJP default key/value pairs for certain
@@ -49,9 +53,9 @@ public class DefaultProperties {
                                                                        project){
     HashMap<String, String> properties = new HashMap<String, String>();
     
-    properties.put("jpf.basedir", VJP.getRootPath());
-    properties.put("vm.classpath", getClasspathEntry(project));
-    properties.put("vm.sourcepath", getSourcepathEntry(project));
+    //properties.put("jpf.basedir", VJP.getRootPath());
+  //  properties.put("vm.classpath", getClasspathEntry(project));
+    //properties.put("vm.sourcepath", getSourcepathEntry(project));
 
     return properties;
   }
@@ -68,17 +72,32 @@ public class DefaultProperties {
     //Find and append env_jpf.jar
     String env_jarPath = null;
     
+    //Find and append jpf-classed.jar
+    String jpf-classes = null;
+    
     try{
       URL url = FileLocator.find(VJP.getDefault().getBundle(), ENV_JPF_PATH, null);
       env_jarPath = FileLocator.toFileURL(url).getFile();
     }catch(IOException ioe){
       VJP.logError("Could not append env_jpf.jar to vm.classpath", ioe);
     }
+    
+    try{
+        URL url2 = FileLocator.find(VJP.getDefault().getBundle(), JPF_Classes_PATH, null);
+        jpf-classes = FileLocator.toFileURL(url).getFile();
+      }catch(IOException ioe){
+        VJP.logError("Could not append jpf-classes.jar to vm.classpath", ioe);
+      }
       
     //Put everything together 
     if (env_jarPath != null){
       cp.append(env_jarPath);    
     }
+    
+    if (jpf-classes != null){
+     //   cp.append(jpf-classes);    
+      }
+    
     
     // Get the project output folder
     String projectFolder = getProjectOutputFolder(project);

@@ -116,6 +116,12 @@ public class VerifyJob extends Job {
   
   private Config createConfig(String path, IJavaProject project){
     Config config = JPF.createConfig(new String[]{path});
+ Enumeration<String> num = (Enumeration<String>) config.propertyNames();
+    
+//    while(num.hasMoreElements()) {
+//    	String key = num.nextElement();
+//    	System.out.println("key = " +key +", value = "+ config.getProperty(key));
+//    }
 
     InputStream in = JPF.class.getResourceAsStream("default.properties");
    try {
@@ -131,12 +137,8 @@ public class VerifyJob extends Job {
 				VJP.logError("Could not close InputStream.", ioe);
 			}
 	}
- Enumeration<String> num = (Enumeration<String>) config.propertyNames();
-    
-    while(num.hasMoreElements()) {
-    	String key = num.nextElement();
-    	System.out.println("key = " +key +", value = "+ config.getProperty(key));
-    }
+   
+
 //    System.out.println("the path is"+ path.toString());
 //    System.out.println("the project  is "+ project.getPath().toString());
     HashMap<String, String> vjp = DefaultProperties.getDefaultProperties(project);
@@ -144,17 +146,23 @@ public class VerifyJob extends Job {
 //    for(String key : vjp.keySet()){
 //    	System.out.println("key = "+key+", value = " +  vjp.get(key));
 //     }
-    
+//    
     for(String key : vjp.keySet()){
       if (!userDefined.containsKey(key))
         config.setProperty(key, vjp.get(key));
     }
     
-    String publisher = userDefined.get("jpf.report.publisher");
+    String publisher = userDefined.get("report.publisher");
 
     if (publisher == null || publisher.contains("topic")){
-      config.setProperty("jpf.report.publisher", "topic");
-      config.setProperty("jpf.report.topic.class", "com.javapathfinder.vjp.verify.topics.TopicPublisher");
+     // config.setProperty("jpf.report.publisher", "topic");
+     // config.setProperty("jpf.report.topic.class", "com.javapathfinder.vjp.verify.topics.TopicPublisher");
+    	config.setProperty("report.publisher", "topic");
+    	config.setProperty("report.topic.class", TopicPublisher.class.getCanonicalName());
+    	  //config.setProperty("report.publisher", "topic");
+          
+          
+//          config.setProperty("report.console.class", "com.javapathfinder.vjp.verify.topics.TopicPublisher");
     }
 	
 //   System.out.println(" config contain log.level: " + config.containsKey("log.level"));
@@ -179,6 +187,83 @@ public class VerifyJob extends Job {
     monitor.subTask("Creating JPF");
 //    System.out.println(config.getProperty("vm.class"));
 //    System.out.println(config.toString());
+ // adding custom properties
+    
+    //config.setProperty("jpf.report.publisher", "topic");
+   // config.setProperty("jpf.report.class", "gov.nasa.jpf.report.Reporter");
+    config.setProperty("vm.bootclasspath", "${jpf.basedir}/build/env/jpf");
+    config.setProperty("vm.enable_assertions", "*");
+    config.setProperty("vm.por.field_boundaries.never", "java.*,javax.*,sun.*");
+    
+    config.setProperty("vm.por.sync_detection", "true");
+//    report.console.constraint = constraint
+//    		report.console.finished = result,statistics
+//    		report.console.probe = statistics
+//    		report.console.property_violation = error,trace,snapshot
+//    		report.console.show_code = false
+//    		report.console.show_method = true
+  //  config.setProperty("report.console.show_steps", "true");		
+    config.setProperty("report.topic.start", "jpf,sut");
+    config.setProperty("report.topic.property_violation", "error,trace,snapshot");
+    config.setProperty("report.topic.finished", "result,statistics");
+    config.setProperty("report.topic.constraint" ,"constraint");
+    config.setProperty("report.topic.probe" ,"statistics");
+    config.setProperty("report.topic.show_code" ,"false");
+    config.setProperty("report.topic.show_method" ,"true");
+    config.setProperty("report.topic.show_steps" ,"true");
+    
+   // config.setProperty("cg.threads.break_all" ,"false");
+    config.setProperty("search.match_depth" ,"false");
+    config.setProperty("vm.bootclasspath" ,"${jpf.basedir}/build/env/jpf"); //check
+    config.setProperty("vm.por.skip_finals" ,"true");
+    config.setProperty("vm.finalize" ,"true");
+    config.setProperty("vm.por" ,"true");
+    config.setProperty("vm.max_alloc_gc" ,"-1");
+    config.setProperty("vm.por.field_boundaries" ,"true");
+  //  config.setProperty("report.console.finished" ,"result,statistics");
+    config.setProperty("vm.visible_asserts" ,"fasle");
+    config.setProperty("vm.por.fli_factory.class" ,"gov.nasa.jpf.vm.StatisticFieldLockInfoFactory");
+    config.setProperty("vm.attributor.class" ,"gov.nasa.jpf.vm.DefaultAttributor");
+    config.setProperty("search.heuristic.class" ,"gov.nasa.jpf.search.heuristic.BFSHeuristic");
+   // config.setProperty("classpath" ,"/home/saad/runtime-EclipseApplication/lol/bin/lol");
+    
+    
+//    config.setProperty(" vm.static_area.class" ,"false");
+    
+   
+    
+   // config.setProperty("report.console.finished", "result,statistics");
+
+   // config.setProperty("log.handler.class", "gov.nasa.jpf.util.LogHandler");
+   // config.setProperty("jpf.report.console.show_method", "true");
+    //config.setProperty("jpf.report.console.finished", "result,statistics");
+    //config.setProperty("jpf.report.console.constraint", "constraint");
+    
+ //config.setProperty("report.console.class", "com.javapathfinder.vjp.verify.topics.TopicPublisher");
+    
+    
+    /* note check 
+     * console.probe
+     */
+    
+    
+    //overwrite property
+ //  config.setProperty("report.publisher", "topic");
+    // this is the one
+  // config.setProperty("report.console.class", "com.javapathfinder.vjp.verify.topics.TopicPublisher");
+   config.setProperty("report.console.constraint", "constraint");
+   config.setProperty("log.level", "severe");
+   
+   //end
+   // config.setProperty("jpf.report.console.show_steps", "true");
+    config.setProperty("report.console.property_violation", "error,trace,snapshot");
+//    config.append("report.console.property_violation", "trace", ",");
+    
+    //remove a property
+    
+    //config.remove("test.report.console.finished");
+    config.remove("peer_packages");
+    System.out.println("I am there");
     JPF jpf = new JPF(config);
     if (monitor.isCanceled())return cancelJob();
     monitor.worked(1);
@@ -193,12 +278,13 @@ public class VerifyJob extends Job {
     
     monitor.subTask("Running verification");
     try{    
-    
+        config.printEntries();
+        System.out.println("Start now");
      jpf.run();  
     }catch(Exception e){
       VJP.logError("Exception while running JPF",e);
     }
-    
+
     checkForTopicPublisher(jpf);
     
     monitor.subTask("Cleaning up...");
@@ -243,10 +329,18 @@ public class VerifyJob extends Job {
   }
   
   private void checkForTopicPublisher(JPF jpf){
+//	System.out.println("getinstance is" +  config.getStringArray("report.publisher", new String[]{"console"})[0]);
+	
+	  
     for (Publisher publisher : jpf.getReporter().getPublishers()){
+    	
+
       if (publisher instanceof TopicPublisher){
+    	 
         TopicView view = TopicView.getView();
         Map<String, Topic> results = ((TopicPublisher)publisher).getResults();
+    	System.out.println("result size is" + results.size());
+
         view.showResults(results);
         return;
       }
