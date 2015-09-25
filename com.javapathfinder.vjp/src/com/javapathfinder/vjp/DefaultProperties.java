@@ -102,7 +102,11 @@ public class DefaultProperties {
 	  return cp.toString();
   }
   
-  
+  /**
+   * 
+   * @param project
+   * @return String
+   */
   private static String getJPFConfigEntry(IJavaProject project){
 	  StringBuilder cp = new StringBuilder();
 	  
