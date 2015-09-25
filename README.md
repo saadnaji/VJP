@@ -1,10 +1,10 @@
 # Visual Java PathFinder
 
-An Eclipse plug-in to verify Java bytecode ie. class file using [Java Pathfinder] [JPF] (JPF).
+An Eclipse plug-in to verify Java bytecode ie. .class file using [Java Pathfinder] [JPF] (JPF).
 
 Some of the plug-in features:
 
-  - One click verification of Java program
+  - One click verification for the  Java program
   - Built-in property editor
   - Graphical representation of JPF's output log.
 
@@ -26,7 +26,7 @@ Then make sure  you have installed Eclipse Plug-in Development (PDE). For more i
 
 After that , clone this repositry.
 
-Finally,  copy jpf.properties file to your local home directory.
+Finally,  copy jpf.properties [prop]  file to your local home directory.
 
 ```sh
 $ cp jpf.properties ~
@@ -42,7 +42,7 @@ Eclipse Public License - v 1.0
 
    [here]: <https://eclipse.org/pde/>    
    [JPF]: <http://babelfish.arc.nasa.gov/trac/jpf>
-    
+   [prop]: <https://github.com/saadnaji/VJP/blob/master/jpf.properties> 
 
 
 
