@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -38,6 +39,7 @@ import com.javapathfinder.vjp.verify.view.TraceTable.TransitionInfo;
  * <li>Error view - displays the errors found (if any) during the verification</li>
  * </ul>
  * @author Sandro Badame
+ * @author Saad Naji
  *
  */
 public class VJPView extends ViewPart implements ISelectionChangedListener{

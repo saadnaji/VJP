@@ -32,6 +32,7 @@ import com.javapathfinder.vjp.config.editors.PropertyViewer;
  * A PropertyViewer that displays and edits all of the default properties
  * stored in jpf.properties and default.properties
  * @author Sandro Badame
+ * @author Saad Naji
  */
 public class DefaultPropertiesViewer extends PropertyViewer {
 

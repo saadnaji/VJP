@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -29,7 +30,7 @@ import com.javapathfinder.vjp.VJP;
 /**
  * Displays the tree of JPF configuration files.
  * @author Sandro Badame
- *
+ * @author Saad Naji
  */
 public class ModePropertyTree extends TreeViewer {
   

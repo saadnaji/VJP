@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -28,6 +29,7 @@ import com.javapathfinder.vjp.verify.view.VJPView;
  * track of JPF. It is also the thread the stalls a verification between
  * steps.
  * @author Sandro Badame
+ * @author Saad Naji
  *
  */
 public class VJPListener extends ListenerAdapter implements SelectionListener {

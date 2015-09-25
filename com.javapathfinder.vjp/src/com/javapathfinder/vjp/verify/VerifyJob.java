@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -46,6 +47,7 @@ import com.javapathfinder.vjp.verify.view.VJPView;
  * The Verify view is created, the publisher is grabbed and verification is
  * executed all in this job.
  * @author Sandro Badame
+ * @author Saad Naji
  */
 public class VerifyJob extends Job {
   /**

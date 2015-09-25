@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -21,6 +22,7 @@ import org.eclipse.swt.widgets.Label;
 /**
  * Displays the errors generated from the verification
  * @author Sandro Badame
+ * @author Saad Naji
  *
  */
 public class ErrorViewer extends ScrolledComposite {

@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -48,6 +49,7 @@ import com.javapathfinder.vjp.VJP;
  * Only the user defined layer is saved to the Mode Property Configuration File.
  * 
  * @author Sandro Badame
+ * @author Saad Naji
  */
 public class ModePropertyConfiguration{
 

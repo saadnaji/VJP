@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -14,9 +15,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TableColumn;
 
-/*
+/**
  * Helper class to help make the userdefinedproperties table and the
  * defaultproperties table uniform.
+ * @author Saad Naji 
  */
 public class PropertyViewer extends TableViewer {
 

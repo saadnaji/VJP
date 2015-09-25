@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -22,6 +23,7 @@ import org.eclipse.swt.widgets.Composite;
  * </ul>
  *  
  * @author Sandro Badame
+ * @author Saad Naji
  */
 public class ConfigFileBar extends Composite {
   

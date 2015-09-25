@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -20,6 +21,7 @@ import com.javapathfinder.vjp.config.editors.ModePropertyConfiguration;
  * The tab that displays the properties loaded from jpf.properties and 
  * default.properties
  * @author Sandro Badame
+ * @author Saad Naji
  */
 public class DefaultPropertiesTab extends Composite{
 

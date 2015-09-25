@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -7,8 +8,9 @@
  ******************************************************************************/
 package com.javapathfinder.vjp.config.editors;
 
-/*
+/**
  * This class is used to help display and store properties in the tables
+ * @author Saad Naji
  */
 //TODO look into whether this class is actually really needed or not.
 public class Property {

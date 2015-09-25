@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -16,7 +17,7 @@ import org.eclipse.jdt.core.IJavaProject;
  * contains those configuration files.
  * 
  * @author Sandro Badame
- *
+ *@author Saad Naji
  */
 //TODO is this guy really needed?
 public class TreeProject{

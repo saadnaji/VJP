@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * Copyright © 2015 Saad Naji. All Rights Reserved.
  * Copyright © 2008 Sandro Badame. All Rights Reserved.
  * 
  * This software and the accompanying materials is available under the 
@@ -20,6 +21,7 @@ import com.javapathfinder.vjp.config.LaunchDialog;
  * This class is called by the plugin manifest to be activated when the
  * verify button on the workspace dialog is clicked.
  * @author Sandro Badame
+ * @author Saad Naji
  */
 public class VJPButtonActionDelegate implements IWorkbenchWindowActionDelegate {
   
