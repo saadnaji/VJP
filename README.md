@@ -26,7 +26,7 @@ Then make sure  you have installed Eclipse Plug-in Development (PDE). For more i
 
 After that , clone this repositry.
 
-Finally,  copy jpf.properties [prop]  file to your local home directory.
+Finally,  copy [jpf.properties] [prop]  file to your local home directory.
 
 ```sh
 $ cp jpf.properties ~
