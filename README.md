@@ -42,8 +42,7 @@ Eclipse Public License - v 1.0
 
    [here]: <https://eclipse.org/pde/>    
    [JPF]: <http://babelfish.arc.nasa.gov/trac/jpf>
-   
- 
+    
 
 
 
