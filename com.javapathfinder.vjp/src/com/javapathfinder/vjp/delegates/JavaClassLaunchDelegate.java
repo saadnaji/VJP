@@ -109,6 +109,7 @@ public class JavaClassLaunchDelegate implements IObjectActionDelegate {
   }
 
   private void initJPFFile(IFile file, String target) throws IOException, CoreException{
+	System.out.println("Target file is " + file.getFullPath().toFile().getAbsolutePath());
     PipedInputStream fileData = new PipedInputStream();
     PipedOutputStream propertyData = new PipedOutputStream(fileData);
     PrintStream writer = new PrintStream(propertyData);

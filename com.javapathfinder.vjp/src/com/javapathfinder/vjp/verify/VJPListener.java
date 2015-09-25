@@ -91,6 +91,8 @@ public class VJPListener extends ListenerAdapter implements SelectionListener {
   }
   
   private void advanceStateTable(Search search){
+	    System.out.println("state id is " );
+
     Transition t = search.getTransition();
     int stateId = search.getStateId();
     boolean isEndState = search.isEndState();

@@ -108,21 +108,21 @@ public class ModePropertyConfiguration{
     //check here
  //  Config config = new Config(null, "jpf.properties", "", JPF.class);
     Config config = new Config("");
-    InputStream in2 = JPF.class.getResourceAsStream("default.properties");
-    try {
- 		config.load(in2);
- 		
- 	} catch (IOException ioe) {
- 	VJP.logError("Could not load InputStream.", ioe);
- 	} finally {
- 	if(in2 != null)
- 			try {
- 			in2.close();
- 			} catch (IOException ioe) {
- 				VJP.logError("Could not close InputStream.", ioe);
- 			}
- 	}
-  
+//    InputStream in2 = JPF.class.getResourceAsStream("default.properties");
+//    try {
+// 		config.load(in2);
+// 		
+// 	} catch (IOException ioe) {
+// 	VJP.logError("Could not load InputStream.", ioe);
+// 	} finally {
+// 	if(in2 != null)
+// 			try {
+// 			in2.close();
+// 			} catch (IOException ioe) {
+// 				VJP.logError("Could not close InputStream.", ioe);
+// 			}
+// 	}
+//  
 
     InputStream in = JPF.class.getResourceAsStream("jpf.properties");
     String[] args = {};	    
@@ -130,19 +130,19 @@ public class ModePropertyConfiguration{
 
     //config.setProperty("jpf-core", "/usr/lib/eclipse/../../../home/saad/git/VJP/com.javapathfinder.vjp/lib/");
 
-    try {
-		config.load(in);
-		
-	} catch (IOException ioe) {
-		VJP.logError("Could not load InputStream.", ioe);
-	} finally {
-		if(in != null)
-			try {
-				in.close();
-			} catch (IOException ioe) {
-				VJP.logError("Could not close InputStream.", ioe);
-			}
-	}
+//    try {
+//		config.load(in);
+//		
+//	} catch (IOException ioe) {
+//		VJP.logError("Could not load InputStream.", ioe);
+//	} finally {
+//		if(in != null)
+//			try {
+//				in.close();
+//			} catch (IOException ioe) {
+//				VJP.logError("Could not close InputStream.", ioe);
+//			}
+//	}
  
     Enumeration<String> numer = (Enumeration<String>) config.propertyNames();
     //added initialization to jpfDefined

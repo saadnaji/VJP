@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
@@ -37,10 +39,15 @@ import org.eclipse.jdt.core.JavaModelException;
 public class DefaultProperties {
   
   private static final Path ENV_JPF_PATH = new Path("lib" + File.separatorChar 
-                                                    + "env_jpf.jar");
-  //new
+                                                    + "jpf.jar");
+  private static final Path JPF_CORE_PATH = new Path("");
+  
+  private static final Path JPF_JAR_PATH = new Path("lib" + File.separatorChar 
+          											+ "jpf.jar");
   private static final Path JPF_Classes_PATH = new Path("lib" + File.separatorChar 
-          + "jpf-classes.jar");
+          											+ "jpf-classes.jar");
+  private static final Path JPF_ANNOTATIONS_PATH = new Path("lib" + File.separatorChar 
+          											+ "jpf-annotations.jar");
 
   /**
    * Creates a HashMap containing the VJP default key/value pairs for certain
@@ -54,13 +61,62 @@ public class DefaultProperties {
                                                                        project){
     HashMap<String, String> properties = new HashMap<String, String>();
     
-    //properties.put("jpf.basedir", VJP.getRootPath());
-   // properties.put("vm.classpath", getClasspathEntry(project));
-   // properties.put("vm.sourcepath", getSourcepathEntry(project));
+    properties.put("jpf-core", 
+    		getJPFCorePropertyEntry(project,JPF_CORE_PATH,"jpf-core" ));
+    properties.put("jpf-core.classpath",
+    		getJPFCorePropertyEntry(project,JPF_Classes_PATH,"jpf-core.classpath" ));
+    properties.put("jpf-core.native_classpath",
+    		getJPFCorePropertyEntry(project,JPF_JAR_PATH,"jpf-core.native_classpath" )
+    		+ ";" +
+    		getJPFCorePropertyEntry(project,JPF_ANNOTATIONS_PATH,"jpf-core.native_classpath" )	);
+    properties.put("classpath", getClasspathEntry(project));
+    System.out.println("get source path" +getSourcepathEntry(project));
     
     return properties;
   }
+  /**
+   * Create a Single
+   * @param project that used to determine the settings from
+   * @return jpf-core property path
+   */
+  private static String getJPFCorePropertyEntry(IJavaProject project, Path path, String property) {
+	  StringBuilder cp = new StringBuilder();
+	  String jpf_core_property = null;
+      URL url = FileLocator.find(VJP.getDefault().getBundle(), path, null);
+      try {
+    	  jpf_core_property = FileLocator.toFileURL(url).getPath();
+      }catch (IOException ioe) {
+    	  VJP.logError("Could not append"+ property +"path to " + property, ioe);
+      }
+           	
+      if(jpf_core_property != null) {
+    	  if(property.equals("jpf-core")) {
+    		  jpf_core_property = jpf_core_property.replaceFirst(".$", "");
+    	  }
+      } 
+    	  cp.append(jpf_core_property);
+     
 
+	  return cp.toString();
+  }
+  
+  
+  private static String getJPFConfigEntry(IJavaProject project){
+	  StringBuilder cp = new StringBuilder();
+	  
+	  String config = null;
+	  final Path bin = new Path("src/");  
+	  IProject JPFProject = project.getProject();
+      URL url = FileLocator.find(VJP.getDefault().getBundle(), bin, null);
+      try {
+    	  config = FileLocator.toFileURL(url).getPath();
+      }catch (IOException ioe) {
+    	  VJP.logError("Could not append jpf path", ioe);
+      }
+	
+	  return "";
+	  
+  }
   /**
    * Creates a single string that can be interpretted by JPF as the claspath
    * for this project and verification.
@@ -71,33 +127,39 @@ public class DefaultProperties {
     StringBuilder cp = new StringBuilder();
     
     //Find and append env_jpf.jar
-    String env_jarPath = null;
-    
-    //Find and append jpf-classed.jar
-    String jpf_classes = null;
-    
-    try{
-      URL url = FileLocator.find(VJP.getDefault().getBundle(), ENV_JPF_PATH, null);
-      env_jarPath = FileLocator.toFileURL(url).getFile();
-    }catch(IOException ioe){
-      VJP.logError("Could not append env_jpf.jar to vm.classpath", ioe);
-    }
-    
-    try{
-        URL url2 = FileLocator.find(VJP.getDefault().getBundle(), JPF_Classes_PATH, null);
-        jpf_classes = FileLocator.toFileURL(url2).getFile();
-      }catch(IOException ioe){
-        VJP.logError("Could not append jpf-classes.jar to vm.classpath", ioe);
-      }
-      
-    // add the env_jpf.jar 
-    if (env_jarPath != null){
-      cp.append(env_jarPath);    
-    }
-    
-    if (jpf_classes != null){
-     //   cp.append(","+jpf_classes);    
-      }
+//    String env_jarPath = null;
+//    
+//    //Find and append jpf-classed.jar
+//    String jpf_classes = null;
+//    
+//    try{
+     // URL url = FileLocator.find(VJP.getDefault().getBundle(), ENV_JPF_PATH, null);
+//      try {
+//		System.out.println("url is" + FileLocator.toFileURL(url).getPath());
+//	} catch (IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//      env_jarPath = FileLocator.toFileURL(url).getFile();
+//    }catch(IOException ioe){
+//      VJP.logError("Could not append env_jpf.jar to vm.classpath", ioe);
+//    }
+//    
+//    try{
+//        URL url2 = FileLocator.find(VJP.getDefault().getBundle(), JPF_Classes_PATH, null);
+//        jpf_classes = FileLocator.toFileURL(url2).getFile();
+//      }catch(IOException ioe){
+//        VJP.logError("Could not append jpf-classes.jar to vm.classpath", ioe);
+//      }
+//      
+//    // add the env_jpf.jar 
+//    if (env_jarPath != null){
+//      cp.append(env_jarPath);    
+//    }
+//    
+//    if (jpf_classes != null){
+//        cp.append(","+jpf_classes);    
+//      }
     
     // add target project paths
     appendProjectClassPaths(project,cp);
@@ -118,31 +180,35 @@ public class DefaultProperties {
       if (defOutputFolder != null) {
         paths.add(defOutputFolder);
       }
-      
       // look for libraries and source root specific output folders
       for (IClasspathEntry e : project.getResolvedClasspath(true)) {
         IPath ePath = null;
-        
+
         switch ( e.getContentKind()) {
         case IClasspathEntry.CPE_LIBRARY: 
           ePath = e.getPath(); break;
         case IClasspathEntry.CPE_SOURCE:
           ePath = e.getOutputLocation(); break;
         }
-        
+
         if (ePath != null && !paths.contains(ePath)) {
+
           paths.add(ePath);
         }
       }
       
       for (IPath path : paths) {
         String absPath = getAbsolutePath(project, path).toOSString();
-        if (cp.length() > 0) {
-          cp.append(Config.LIST_SEPARATOR);
-        }
-        cp.append(absPath);
+
+
+//        if (cp.length() > 0) {
+//          cp.append(Config.LIST_SEPARATOR);
+//        }
+        // only add classes that are found in bin
+        if(absPath.contains("/bin"))
+        	cp.append(absPath);
       }
-      
+      System.out.println("cp is" + cp);
     } catch(JavaModelException jme){
       VJP.logError("Could not append Project classpath", jme);
     }

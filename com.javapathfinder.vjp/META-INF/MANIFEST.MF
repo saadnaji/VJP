@@ -15,8 +15,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.text
 Eclipse-LazyStart: true
 Bundle-ClassPath: .,
- lib/env_jvm.jar,
- lib/env_jpf.jar,
- lib/jpf.jar,
- lib/jpf-classes.jar
- 
+ lib/jpf-annotations.jar,
+ lib/jpf-classes.jar,
+ lib/jpf.jar
